@@ -64,6 +64,16 @@ export default defineStore("cartStore", {
             })
             
         },
+        delCartItem(cartId){
+            axios.delete(`${url}api/${path}/cart/${cartId}`)
+            .then(res => {
+                this.getCart();
+            })
+            .catch (err => {
+                console.log(err);
+            })
+
+        },
         clearCart(){
             const { hideProductModal } = productModalStore();
             const { showAlertModal } = alertModalStore();
